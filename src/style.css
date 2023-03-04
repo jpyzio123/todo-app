@@ -1,0 +1,52 @@
+.todo-list {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+button[type='submit'] {
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+textarea {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.todo-list h1 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.deleteButton {
+  background-color: #d11b42;
+  color: white;
+}
