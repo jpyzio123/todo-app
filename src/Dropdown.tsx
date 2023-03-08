@@ -1,18 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-export function DropdownList() {
-  const [selectedStatus, setSelectedStatus] = useState('Open');
-
+export function DropdownList({ status, onChange }) {
   return (
     <div>
       <a> Status: </a>
-      <select
-        value={selectedStatus}
-        onChange={(event) => setSelectedStatus(event.target.value)}
-      >
-        <option value="Status A">do roboty</option>
-        <option value="Status B">robi sie</option>
-        <option value="Status C">zrobione</option>
+      <select value={status} onChange={onChange}>
+        <option value="Open">Open</option>
+        <option value="In Progress">In progress</option>
+        <option value="Done">Done</option>
       </select>
     </div>
   );
