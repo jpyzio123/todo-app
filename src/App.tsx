@@ -5,7 +5,7 @@ import { TodoForm } from "./Form";
 
 export const context = createContext(null);
 
-function ToDoList() {
+function App() {
   return (
     <ContextProvider>
       <div className="todo-list">
@@ -17,22 +17,41 @@ function ToDoList() {
   );
 }
 
-function ContextProvider({ children }) {
+function useTodos() {
   const [todos, setTodos] = useState([]);
   const deleteTodo = useCallback(
     (idToDelete) => {
       const newTodos = todos.filter((todo) => todo.id !== idToDelete);
       setTodos(newTodos);
-      //id set Math.random().toString()
     },
     [todos]
   );
 
+  const addTodo = (title, description) => {
+    const newTodo = {
+      id: Math.random().toString(),
+      title,
+      description,
+    };
+
+    setTodos((currentTodos) => [...currentTodos, newTodo]);
+  };
+
+  return {
+    todos,
+    addTodo,
+    deleteTodo,
+  };
+}
+
+function ContextProvider({ children }) {
+  const { todos, addTodo, deleteTodo } = useTodos();
+
   return (
-    <context.Provider value={{ todos, setTodos, deleteTodo }}>
+    <context.Provider value={{ todos, addTodo, deleteTodo }}>
       {children}
     </context.Provider>
   );
 }
 
-export default ToDoList;
+export default App;

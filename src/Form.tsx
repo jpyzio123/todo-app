@@ -4,7 +4,7 @@ import { context } from "./App";
 export function TodoForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const { setTodos } = useContext(context);
+  const { addTodo } = useContext(context);
 
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
@@ -14,21 +14,12 @@ export function TodoForm() {
     setTitle(event.target.value);
   };
 
-  const handleSubmit = (title, description) => {
-    const newTodo = {
-      id: Math.random().toString(),
-      title,
-      description,
-    };
-    setTodos((currentTodos) => [...currentTodos, newTodo]);
-  };
-
   return (
     <Fragment>
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          handleSubmit(title, description);
+          addTodo(title, description);
           setTitle("");
           setDescription("");
         }}
